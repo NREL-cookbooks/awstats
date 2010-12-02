@@ -1,6 +1,6 @@
 #!/bin/bash
 
-exec <%= node[:awstats][:install_path]/tools/awstats_update_all.pl now \
+exec <%= node[:awstats][:install_path] %>/tools/awstats_update_all.pl now \
   -configdir="/etc/awstats" \
   -awstatsprog="<%= node[:awstats][:install_path] %>/wwwroot/cgi-bin/awstats.pl" > /var/log/awstats.log
 
