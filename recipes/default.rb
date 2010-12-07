@@ -32,8 +32,15 @@ bash "Install AWStats" do
   end
 end
 
-directory "/var/lib/awstats" do
-  mode 0755
+directory node[:awstats][:data_path] do
+  mode "0755"
+  owner "root"
+  group "root"
+end
+
+template "/etc/awstats.conf" do
+  source "awstats.conf.erb"
+  mode "0644"
   owner "root"
   group "root"
 end
@@ -41,7 +48,7 @@ end
 # Install the cronjob that runs awstats every day.
 template "/etc/cron.daily/awstats" do
   source "cron.erb"
-  mode 0755
+  mode "0755"
   owner "root"
   group "root"
 end
