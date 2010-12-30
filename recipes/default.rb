@@ -28,7 +28,7 @@ bash "Install AWStats" do
   EOS
 
   not_if do
-    ::File.exists?(node[:awstats][:install_path]) && system("grep '^Version: #{node[:awstats][:version]}$' #{node[:awstats][:install_path]}/README.TXT")
+    ::File.exists?(node[:awstats][:install_path]) && system("grep '^Version: #{node[:awstats][:version]}$' #{node[:awstats][:install_path]}/README.TXT > /dev/null")
   end
 end
 
