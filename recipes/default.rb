@@ -23,7 +23,7 @@ bash "Install AWStats" do
   code <<-EOS
   rm -rf /tmp/awstats-#{node[:awstats][:version]}
   tar -xvf awstats-#{node[:awstats][:version]}.tar.gz
-  rsync -a awstats-#{node[:awstats][:version]}/ #{node[:awstats][:install_path]}
+  rsync -a --delete-delay awstats-#{node[:awstats][:version]}/ #{node[:awstats][:install_path]}
   rm -rf /tmp/awstats-#{node[:awstats][:version]}
   EOS
 
@@ -46,9 +46,9 @@ template "/etc/awstats.conf" do
 end
 
 # Install the cronjob that runs awstats every day.
-template "/etc/cron.daily/awstats" do
+template "/etc/cron.d/awstats" do
   source "cron.erb"
-  mode "0755"
+  mode "0644"
   owner "root"
   group "root"
 end
