@@ -55,6 +55,6 @@ end
 
 # Rotate the log files cron outputs.
 logrotate_app "awstats" do
-  paths "/var/log/awstats.log"
+  path "/var/log/awstats.log"
   rotate 7
 end
