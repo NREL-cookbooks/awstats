@@ -11,20 +11,20 @@ include_recipe "apache2"
 include_recipe "logrotate"
 include_recipe "rsync"
 
-remote_file "/tmp/awstats-#{node[:awstats][:version]}.tar.gz" do
+remote_file "#{Chef::Config[:file_cache_path]}/awstats-#{node[:awstats][:version]}.tar.gz" do
   source node[:awstats][:url]
   checksum node[:awstats][:archive_checksum]
-  not_if { ::File.exists?("/tmp/awstats-#{node[:awstats][:version]}.tar.gz") }
+  not_if { ::File.exists?("#{Chef::Config[:file_cache_path]}/awstats-#{node[:awstats][:version]}.tar.gz") }
 end
 
 bash "Install AWStats" do
-  cwd "/tmp"
+  cwd Chef::Config[:file_cache_path]
 
   code <<-EOS
-  rm -rf /tmp/awstats-#{node[:awstats][:version]}
+  rm -rf #{Chef::Config[:file_cache_path]}/awstats-#{node[:awstats][:version]}
   tar -xvf awstats-#{node[:awstats][:version]}.tar.gz
   rsync -a --delete-delay awstats-#{node[:awstats][:version]}/ #{node[:awstats][:install_path]}
-  rm -rf /tmp/awstats-#{node[:awstats][:version]}
+  rm -rf #{Chef::Config[:file_cache_path]}/awstats-#{node[:awstats][:version]}
   EOS
 
   not_if do
