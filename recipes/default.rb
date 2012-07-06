@@ -19,6 +19,8 @@ end
 
 bash "Install AWStats" do
   cwd Chef::Config[:file_cache_path]
+  user "root"
+  group "root"
 
   code <<-EOS
   rm -rf #{Chef::Config[:file_cache_path]}/awstats-#{node[:awstats][:version]}
