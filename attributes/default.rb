@@ -13,6 +13,7 @@ default[:awstats][:archive_checksum] = "e2651d4a5ff40e1d792b37cc13784d444cae479b
 default[:awstats][:install_path] = "/opt/awstats"
 default[:awstats][:log_file] = "/var/log/httpd/mylog.log"
 default[:awstats][:data_path] = "/var/lib/awstats"
+default[:awstats][:dir_icons] = "/icon"
 default[:awstats][:domain] = "example.com"
 default[:awstats][:dns_lookup] = "2"
 default[:awstats][:allow_full_year_view] = "2"

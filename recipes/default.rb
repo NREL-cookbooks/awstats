@@ -7,7 +7,6 @@
 # All rights reserved - Do Not Redistribute
 #
 
-include_recipe "apache2"
 include_recipe "logrotate"
 include_recipe "rsync"
 
@@ -38,6 +37,7 @@ directory node[:awstats][:data_path] do
   mode "0755"
   owner "root"
   group "root"
+  recursive true
 end
 
 template "/etc/awstats.conf" do
@@ -57,6 +57,6 @@ end
 
 # Rotate the log files cron outputs.
 logrotate_app "awstats" do
-  path "/var/log/awstats.log"
+  path ["/var/log/awstats.log"]
   rotate 7
 end
