@@ -47,6 +47,13 @@ template "/etc/awstats.conf" do
   group "root"
 end
 
+template "#{node[:awstats][:install_path]}/wwwroot/cgi-bin/lib/robots.pm" do
+  source "robots.pm.erb"
+  mode "0755"
+  owner "root"
+  group "root"
+end
+
 # Install the cronjob that runs awstats every day.
 template "/etc/cron.d/awstats" do
   source "cron.erb"

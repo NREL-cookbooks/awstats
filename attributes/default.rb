@@ -17,3 +17,6 @@ default[:awstats][:dir_icons] = "/icon"
 default[:awstats][:domain] = "example.com"
 default[:awstats][:dns_lookup] = "2"
 default[:awstats][:allow_full_year_view] = "2"
+
+default[:awstats][:robots][:list1] = []
+default[:awstats][:robots][:list2] = []
