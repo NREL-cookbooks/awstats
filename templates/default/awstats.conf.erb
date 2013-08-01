@@ -1,4 +1,4 @@
-# AWSTATS CONFIGURE FILE 7.0
+# AWSTATS CONFIGURE FILE 7.1
 #-----------------------------------------------------------------------------
 # Copy this file into awstats.www.mydomain.conf and edit this new config file
 # to setup AWStats (See documentation in docs/ directory).
@@ -10,7 +10,7 @@
 # Note that environment variable AWSTATS_CURRENT_CONFIG is always defined with
 # the config value in an AWStats running session and can be used like others.
 #-----------------------------------------------------------------------------
-# $Revision: 1.350 $ - $Author: eldy $ - $Date: 2010/09/29 19:16:21 $
+# $Revision: 1.355 $ - $Author: eldy $ - $Date: 2013/02/10 15:39:22 $
 
 
 
@@ -83,6 +83,7 @@ LogType=W
 #   %time2            Date and time with format: yyyy-mm-dd hh:mm:ss
 #   %time3            Date and time with format: Mon dd hh:mm:ss or Mon dd hh:mm:ss yyyy
 #   %time4            Date and time with unix timestamp format: dddddddddd
+#   %time5            Date and time with format iso: yyyy-mm-ddThh:mm:ss
 #   %methodurl        Method and URL with format: "GET /index.html HTTP/x.x"
 #   %methodurlnoprot  Method and URL with format: "GET /index.html"
 #   %method           Method with format: GET
@@ -810,6 +811,13 @@ DecodeUA=0
 MiscTrackerUrl="/js/awstats_misc_tracker.js"
 
 
+# AddLinkToExternalCGIWrapper can be used to add a link to a wrapper script
+# into each title of Dolibarr reports. This can be used to add a wrapper
+# to download data into a CSV file for example.
+#
+# AddLinkToExternalCGIWrapper="/awstats/awdownloadcsv.pl"
+
+
 
 #-----------------------------------------------------------------------------
 # OPTIONAL ACCURACY SETUP SECTION (Not required but increase AWStats features)
@@ -965,7 +973,7 @@ ShowHoursStats=PHB
 
 # Show domains/country chart
 # Context: Web, Streaming, Mail, Ftp
-# Default: PHB, Possible column codes: PHB
+# Default: PHB, Possible column codes: UVPHB
 ShowDomainsStats=PHB
 
 # Show hosts chart
@@ -1217,7 +1225,7 @@ MetaRobot=0
 # Default: "awstats_logo6.png"
 #
 Logo="awstats_logo6.png"
-LogoLink="http://awstats.sourceforge.net"
+LogoLink="http://www.awstats.org"
 
 
 # Value of maximum bar width/height for horizontal/vertical HTML graphics bars.
