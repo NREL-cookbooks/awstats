@@ -22,9 +22,9 @@ bash "Install AWStats" do
   group "root"
 
   code <<-EOS
-  rm -rf #{Chef::Config[:file_cache_path]}/awstats-#{node[:awstats][:version]}
-  tar -xvf awstats-#{node[:awstats][:version]}.tar.gz
-  rsync -a --delete-delay awstats-#{node[:awstats][:version]}/ #{node[:awstats][:install_path]}
+  rm -rf #{Chef::Config[:file_cache_path]}/awstats-#{node[:awstats][:version]} && \
+  tar -xvf awstats-#{node[:awstats][:version]}.tar.gz && \
+  rsync -a --delete-delay awstats-#{node[:awstats][:version]}/ #{node[:awstats][:install_path]} && \
   rm -rf #{Chef::Config[:file_cache_path]}/awstats-#{node[:awstats][:version]}
   EOS
 
