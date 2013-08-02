@@ -25,6 +25,8 @@ bash "Install AWStats" do
   rm -rf #{Chef::Config[:file_cache_path]}/awstats-#{node[:awstats][:version]} && \
   tar -xvf awstats-#{node[:awstats][:version]}.tar.gz && \
   rsync -a --delete-delay awstats-#{node[:awstats][:version]}/ #{node[:awstats][:install_path]} && \
+  chown -R root:root #{node[:awstats][:install_path]} && \
+  chmod -R 755 #{node[:awstats][:install_path]} && \
   rm -rf #{Chef::Config[:file_cache_path]}/awstats-#{node[:awstats][:version]}
   EOS
 
@@ -49,6 +51,13 @@ end
 
 template "#{node[:awstats][:install_path]}/wwwroot/cgi-bin/lib/robots.pm" do
   source "robots.pm.erb"
+  mode "0755"
+  owner "root"
+  group "root"
+end
+
+template "#{node[:awstats][:install_path]}/wwwroot/cgi-bin/lib/mime.pm" do
+  source "mime.pm.erb"
   mode "0755"
   owner "root"
   group "root"

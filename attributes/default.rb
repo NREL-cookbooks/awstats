@@ -20,3 +20,5 @@ default[:awstats][:allow_full_year_view] = "2"
 
 default[:awstats][:robots][:list1] = []
 default[:awstats][:robots][:list2] = []
+
+default[:awstats][:mime_types] = []
