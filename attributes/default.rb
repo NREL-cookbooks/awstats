@@ -7,9 +7,9 @@
 # All rights reserved - Do Not Redistribute
 #
 
-default[:awstats][:version] = "7.2"
+default[:awstats][:version] = "7.3"
 default[:awstats][:url] = "http://superb-dca2.dl.sourceforge.net/project/awstats/AWStats/#{awstats[:version]}/awstats-#{awstats[:version]}.tar.gz"
-default[:awstats][:archive_checksum] = "740cb46ac5a7befb72ff0b80d0e53c6fe3560700208bce18f4fb5b2b5e275791"
+default[:awstats][:archive_checksum] = "642da01c4482c99f68076c02b9a6e0c6de803303597be4ee4d0c8fce69bd1ad4"
 default[:awstats][:install_path] = "/opt/awstats"
 default[:awstats][:log_file] = "/var/log/httpd/mylog.log"
 default[:awstats][:data_path] = "/var/lib/awstats"
